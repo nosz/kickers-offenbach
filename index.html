@@ -386,7 +386,7 @@ a.credit:focus-visible{outline:3px solid #fff;outline-offset:4px;box-shadow:0 0 
 <div id="live" class="sr" aria-live="polite"></div>
 <script>
 "use strict";
-const VERSION = "1.0.0", STAND = "23.10.2026";
+const VERSION = "1.0.1", STAND = "23.10.2026";
 const LANGS = [["de","DE","Deutsch"],["en","EN","English"],["hes","HES","Hessisch"]];
 const KEY = "ofc_kickers_v1";
 let li = 0, prog = {}, nm = "", ach = {}, view = {v:"home"};
@@ -1143,7 +1143,8 @@ function certQBlock(l, F){
   });
   return out;
 }
-function certSVG(l){
+/* Kleiner Fussball als Urkunden-Schmuck (statt eckiger Konfetti-Quadrate und Pixel-Logo): runder Ball mit Fuenfeck-Muster in Vereinsfarbe */
+const ballG = (x, y, r, c) => '<g transform="translate(' + x + ' ' + y + ') scale(' + r + ')"><circle r="1" fill="#ffffff" stroke="#1f2026" stroke-width=".12"/><polygon points="0,-.42 .4,-.13 .25,.34 -.25,.34 -.4,-.13" fill="' + c + '" stroke="#1f2026" stroke-width=".05"/><path d="M0 -.42V-.9M.4 -.13L.86 -.28M.25 .34L.52 .74M-.25 .34L-.52 .74M-.4 -.13L-.86 -.28" fill="none" stroke="#1f2026" stroke-width=".07" stroke-linecap="round"/></g>';function certSVG(l){
   const M = !l, g = k => CT[k][li], n = nm.trim();
   const T = totals(), st = M ? T.st : starsOf(prog[l.id], l.q.length), right = M ? 0 : prog[l.id].best;
   const d = new Date().toLocaleDateString(({de:"de-DE", en:"en-GB", hes:"de-DE"})[LANGS[li][0]], {day:"2-digit", month:"long", year:"numeric"});
@@ -1155,7 +1156,7 @@ function certSVG(l){
   const footTxt = g("foot") + " · v" + VERSION, footSz = Math.max(11, Math.min(15, Math.floor(860 / (footTxt.length * .53))));
   const stars = [0,1,2].map(k => '<text x="' + (561.5 + (k-1)*70) + '" y="' + (M ? 490 : 440) + '" font-size="' + (M ? 58 : 54) + '" text-anchor="middle" fill="' + (M || k < st ? "#ffc800" : "#d9d9de") + '" stroke="' + (M || k < st ? "#b58900" : "#b8b9bd") + '" stroke-width="2">★</text>').join("");
   const band = ["#dd2a1e","#3a5068","#ffd24d","#1b7a3d","#8d95a3"].map((c, i) => '<rect x="' + (60 + i*200.6) + '" y="36" width="200.6" height="16" fill="' + c + '"/>').join("");
-  const conf = [[110,150,"#3a5068"],[1010,170,"#ffc800"],[130,640,"#1b7a3d"],[1000,650,"#6b3fa0"],[90,330,"#ffc800"],[1030,360,"#dd2a1e"],[160,230,"#dd2a1e"],[960,250,"#1b7a3d"]].map(a => '<rect x="' + a[0] + '" y="' + a[1] + '" width="16" height="16" rx="3" transform="rotate(' + (a[0]%40-20) + ' ' + a[0] + ' ' + a[1] + ')" fill="' + a[2] + '"/>').join("");
+  const conf = [[110,150,"#3a5068"],[1010,170,"#ffc800"],[130,640,"#1b7a3d"],[1000,650,"#6b3fa0"],[90,330,"#ffc800"],[1030,360,"#dd2a1e"],[160,230,"#dd2a1e"],[960,250,"#1b7a3d"]].map(a => ballG(a[0], a[1], 10.5, a[2])).join("");
   const head = M ? g("headM") : g("head");
   const hs = Math.min(72, Math.floor(860 / (head.length * 0.78)));
   const line = hasName() ? fill(M ? CT.lineMN[li] : CT.linesN[Math.max(0, st-1)][li]) : (M ? g("lineM") : CT.lines[Math.max(0, st-1)][li]);
@@ -1179,7 +1180,7 @@ function certSVG(l){
    + '<text x="561.5" y="646" text-anchor="middle" font-size="' + lsz + '" font-style="italic" fill="#4d4f54" ' + F + '>' + esc(line) + '</text>'
    + '<text x="110" y="700" font-size="15" fill="#565860" ' + F + '>' + esc(g("date") + ": " + d) + '</text>'
    + '<text x="110" y="722" font-size="15" fill="#565860" ' + F + '>' + esc(g("rankL") + ": " + rank) + '</text>'
-   + '<circle cx="561.5" cy="686" r="30" fill="#ffffff" stroke="#dd2a1e" stroke-width="4.5"/><g transform="translate(541.5 666) scale(2.5)">' + logoRects() + '</g>'
+   + '<circle cx="561.5" cy="686" r="30" fill="#ffffff" stroke="#dd2a1e" stroke-width="4.5"/>' + ballG(561.5, 686, 21, "#dd2a1e") + ''
    + '<text x="1013" y="696" text-anchor="end" font-size="16" font-style="italic" fill="#1f2026" ' + F + '>' + esc(g("sign")) + '</text>'
    + '<line x1="760" y1="704" x2="1013" y2="704" stroke="#1f2026" stroke-width="1.5"/>'
    + '<text x="561.5" y="734" text-anchor="middle" font-size="17" font-weight="800" fill="#3a5068" ' + F + '>' + esc(NURL[li][1]) + '</text>'
