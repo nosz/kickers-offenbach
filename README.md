@@ -6,7 +6,7 @@
 
 **Inoffizielles Fan-Projekt** rund um den O.F.C. Kickers 1901 e. V. Offenbach, ohne Verbindung zum Verein. Quiz, Humor und Zertifikate in **Deutsch, Englisch und Hessisch** (Offenbacher Mundart, liebevoll gemeint).
 
-**Datei:** `index.html` (eine Datei, offline lauffähig, Version 1.0.0, Stand 23.10.2026). Einfach im Browser öffnen oder auf einem Webserver ablegen.
+**Datei:** `index.html` (eine Datei, offline lauffähig, Version 1.0.1, Stand 23.10.2026). Einfach im Browser öffnen oder auf einem Webserver ablegen.
 
 > **Veröffentlichung:** GitHub-Repository `kickers-offenbach` (Benutzer `nosz`), Adresse `https://nosz.github.io/kickers-offenbach/`. Alle Dateien der Liste unten ins Hauptverzeichnis des Repositories legen (ohne Unterordner), GitHub Pages auf den Hauptzweig (Branch) stellen. Bei anderer Adresse in `index.html` (canonical, og:url, og:image, twitter:image, `SHARE_URL`), in `manifest.webmanifest` (`id`) und in dieser README anpassen.
 
@@ -45,4 +45,5 @@ Rot (ca. #ee3124, im Quiz leicht abgedunkelt für guten Kontrast), Weiß und Sch
 - Vor einer öffentlichen Veröffentlichung Marken- und Stil-Anlehnung mit Management/Legal klären.
 
 ## Änderungsprotokoll
+- 1.0.1 (23.10.2026): Urkunden: kleine runde Fußbälle als Schmuck statt der eckigen Quadrate, im Siegel ein runder Ball statt des Pixel-Logos.
 - 1.0.0 (23.10.2026): Erstfassung: Kickers-Quiz mit 7 Spieltagen, kleinem Fußball als Pixel-Figur (läuft, hüpft, rollt; Deutsch, Englisch, Hessisch), Namensfrage mit Speichern-Knopf, Lob, Installieren-Knopf, Teilen-Funktion, Zertifikaten, Autoren-Knopf „Website Design by Norbert“ und Test-Suite.
